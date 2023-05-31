@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS Transacao (
+  descricao VARCHAR(255) NOT NULL,
+  valor DOUBLE NOT NULL,
+  data DATE NOT NULL
+)
