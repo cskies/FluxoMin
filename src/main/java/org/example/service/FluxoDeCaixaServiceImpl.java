@@ -12,15 +12,18 @@ import java.util.List;
 public class FluxoDeCaixaServiceImpl implements FluxoDeCaixaService {
 
     private Connection connection;
+
     private List<Transacao> transacoes;
 
-    public FluxoDeCaixaServiceImpl() {
-        try {
-            connection = DriverManager.getConnection("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public FluxoDeCaixaServiceImpl(Connection connection) {
+        this.connection = connection;
+        this.transacoes = new ArrayList<>(); // Inicializa a lista de transações
     }
+
+    public FluxoDeCaixaServiceImpl() {
+
+    }
+
 
     @Override
     public void adicionarTransacao(String descricao, double valor) {
