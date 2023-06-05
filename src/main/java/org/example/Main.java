@@ -14,19 +14,21 @@ public class Main {
         try {
             Connection connection = DriverManager.getConnection("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
 
-            FluxoDeCaixaServiceImpl fluxoDeCaixaService = new FluxoDeCaixaServiceImpl(connection);
+            FluxoDeCaixaServiceImpl instance = FluxoDeCaixaServiceImpl.getInstance(connection);
+
+//            FluxoDeCaixaServiceImpl fluxoDeCaixaService = new FluxoDeCaixaServiceImpl(connection);
 
             FluxoDeCaixaView
-                    fluxoDeCaixaView = new FluxoDeCaixaView(fluxoDeCaixaService);
+                    fluxoDeCaixaView = new FluxoDeCaixaView();
 
-            fluxoDeCaixaService.adicionarTransacao("Venda de produto A", 1000);
-            fluxoDeCaixaService.adicionarTransacao("Pagamento de fornecedor", -500);
-            fluxoDeCaixaService.adicionarTransacao("Venda de produto B", 800);
+            instance.adicionarTransacao("Venda de produto A", 1000);
+            instance.adicionarTransacao("Pagamento de fornecedor", -500);
+            instance.adicionarTransacao("Venda de produto B", 800);
 
             LocalDate hoje = LocalDate.now();
 
-            List<Transacao> transacoesDoDia = fluxoDeCaixaService.getTransacoesDoDia(hoje);
-            double saldoDoDia = fluxoDeCaixaService.calcularSaldoDoDia(hoje);
+            List<Transacao> transacoesDoDia = instance.getTransacoesDoDia(hoje);
+            double saldoDoDia = instance.calcularSaldoDoDia(hoje);
 
             fluxoDeCaixaView.exibirTransacoesDoDia(transacoesDoDia);
             fluxoDeCaixaView.exibirSaldoDoDia(saldoDoDia);

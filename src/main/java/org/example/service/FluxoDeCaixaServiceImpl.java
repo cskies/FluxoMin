@@ -15,16 +15,19 @@ public class FluxoDeCaixaServiceImpl implements FluxoDeCaixaService {
 
     private List<Transacao> transacoes;
 
-    public FluxoDeCaixaServiceImpl(Connection connection) {
+    private static FluxoDeCaixaServiceImpl instance;
+
+    private FluxoDeCaixaServiceImpl(Connection connection) {
         this.connection = connection;
         this.transacoes = new ArrayList<>(); // Inicializa a lista de transações
     }
 
-    public FluxoDeCaixaServiceImpl() {
-
+    public static synchronized FluxoDeCaixaServiceImpl getInstance(Connection connection) {
+        if (instance == null) {
+            instance = new FluxoDeCaixaServiceImpl(connection);
+        }
+        return instance;
     }
-
-
     @Override
     public void adicionarTransacao(String descricao, double valor) {
         LocalDate data = LocalDate.now();

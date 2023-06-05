@@ -20,12 +20,24 @@ Este é um projeto Java de um fluxo de caixa diário que permite adicionar trans
 
 ## Executando o projeto
 
-1. Após a compilação bem-sucedida, execute o seguinte comando para iniciar o projeto:
+1. Na classe Main, metodo main, insira as informacoes para persistir no banco H2. E partir disso dar play na aplicacaoP
 
 
 2. O programa exibirá um menu com opções para adicionar transações e exibir o consolidado diário. Siga as instruções fornecidas no terminal para interagir com o programa.
 
-## Contribuição
+## Requisitos de negocio
 
-Contribuições são bem-vindas! Se você tiver sugestões de melhorias, novos recursos ou encontrar problemas no projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+Conforme solicitado a aplicacao possui:
+- servico que faca o controle de lancamentos
+- consolidado diario
+
+
+## Requisitos tecnicos
+
+Conforme solicitado foi realizado na aplicacao:
+
+- Feito na linguagem java 17
+- foram usadas boas praticas - pattern singleton, SOLID SRP
+- Readme
+- hospedado no github - https://github.com/cskies/FluxoMin
 
